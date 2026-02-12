@@ -373,6 +373,7 @@
 "Assets/Scripts/NodeController.cs"
 "Assets/Scripts/NodeDeleter.cs"
 "Assets/Scripts/NodeSpawner.cs"
+"Assets/Scripts/PlayerCollider.cs"
 "Assets/Scripts/PlayerInput.cs"
 -langversion:9.0
 /deterministic

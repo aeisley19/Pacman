@@ -3,57 +3,53 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-
     [SerializeField] private Animator animator;
-    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject startNode;
     [SerializeField] private float speed;
+    [SerializeField] private PlayerInput input;
     private Vector3 direction;
     private GameObject currentNode;
     private GameObject nextNode;
-    private bool canMove;
+    private Vector3 turnDirection;
+    private int turnTimer = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        canMove = false;
-        nextNode = startNode;
+        currentNode = startNode;
+        direction = Vector3.left;
+        nextNode = currentNode.GetComponent<NodeController>().GetNextNode(Vector3.left);
     }
 
     // Update is called once per frame
     void Update()
     {
-        List<GameObject> possibleNodes;
+        NodeController nodeController = currentNode.GetComponent<NodeController>();
 
-        direction = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
-
-        if(Vector2.Distance(transform.position, nextNode.transform.position) <= 0.01f)
+        //Gets next direction
+        if(input.Direction == -direction) direction = input.Direction;
+        else if ((input.Direction.x == 0 && input.Direction.y != 0) || (input.Direction.x != 0 && input.Direction.y == 0))
         {
-            canMove = false;
+            turnDirection = input.Direction;
+            print("dir " + direction);
+            print("turn " + turnDirection);
+        }
+  
+        transform.position = Vector3.MoveTowards(transform.position, nextNode.transform.position, speed
+                * Time.deltaTime);
+
+        if(transform.position == nextNode.transform.position)
+        {
             currentNode = nextNode;
-            possibleNodes = currentNode.gameObject.GetComponent<NodeController>().GetPossibleNextNodes();
 
-            foreach(GameObject node in possibleNodes)
+            if(currentNode.GetComponent<NodeController>().GetNextNode(turnDirection) != null) 
             {
-                //Distance to next node.
-                Vector3 heading = node.transform.position - transform.position;
-                Vector3 directionToNode = heading/heading.magnitude;
-                print(node.name + " " + directionToNode);
-
-                if(direction == directionToNode)
-                {
-                    canMove = true;
-                    nextNode = node;
-                    break;
-                }
-
-                print(canMove);
+                direction = turnDirection;
             }
-
-            print("current position " + transform.position);
-            print("left node " + possibleNodes[1].transform.position);
         }
 
-        if(canMove) rb.MovePosition(transform.position + speed * direction * Time.deltaTime);
+        nextNode = nodeController.GetNextNode(direction) ?? currentNode;
+        animator.SetFloat("moveX", direction.x);
+        animator.SetFloat("moveY", direction.y);
     }
 }

@@ -43,13 +43,14 @@
     <UnityVersion>6000.0.44f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="/home/alex/.vscode/extensions/visualstudiotoolsforunity.vstuc-1.2.1/Analyzers/Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="/home/alex/Unity/Hub/Editor/6000.0.44f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll" />
     <Analyzer Include="/home/alex/Unity/Hub/Editor/6000.0.44f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="/home/alex/Unity/Hub/Editor/6000.0.44f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f/Editor/VersionPair.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f/Editor/ProjectGeneration/GUIDProvider.cs" />
+    <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f/Editor/VersionPair.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f/Editor/UsageUtility.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f/Editor/Messaging/Serializer.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f/Editor/ProjectGeneration/ProjectProperties.cs" />
@@ -76,8 +77,8 @@
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f/Editor/ProjectGeneration/ProjectGenerationFlag.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f/Editor/Messaging/TcpListener.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f/Editor/ProjectGeneration/SdkStyleProjectGeneration.cs" />
-    <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f/Editor/UnityInstallation.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f/Editor/Messaging/ExceptionEventArgs.cs" />
+    <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f/Editor/UnityInstallation.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f/Editor/VisualStudioInstallation.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f/Editor/SolutionProperties.cs" />
     <Compile Include="Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f/Editor/ProjectGeneration/FileIOProvider.cs" />

@@ -4,16 +4,15 @@ public class PlayerInput : MonoBehaviour
 {
 
     [SerializeField] Animator animator;
-    [SerializeField] Movement movement;
     private bool right;
     private bool left;
     private bool up;
     private bool down;
+    public Vector3 Direction { get; private set; }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Direction = Vector3.left;
     }
 
     // Update is called once per frame
@@ -24,7 +23,21 @@ public class PlayerInput : MonoBehaviour
         left = Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A);
         right = Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D);
 
-
-       // if(animator.GetFloat("moveX") == 0 )
+        if(right)
+        {
+            Direction = Vector2.right;
+        }
+        if(left)
+        {
+            Direction = Vector2.left;        
+        }
+        if(up)
+        {
+            Direction = Vector2.up;
+        }
+        if(down)
+        {
+            Direction = Vector2.down;
+        }
     }
 }
