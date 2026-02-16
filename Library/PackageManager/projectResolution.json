@@ -49,6 +49,16 @@
       "source": "builtin",
       "testable": false
     },
+    "com.unity.scriptablebuildpipeline@2.1.5": {
+      "name": "com.unity.scriptablebuildpipeline",
+      "displayName": "Scriptable Build Pipeline",
+      "resolvedPath": "/home/alex/Documents/projects/Games/Pac Man/Library/PackageCache/com.unity.scriptablebuildpipeline@8cf66f134cb3",
+      "fingerprint": "8cf66f134cb3f8a955d489173bfd88b3df4f8bf0",
+      "editorCompatibility": "2019.4.0a1",
+      "version": "2.1.5",
+      "source": "registry",
+      "testable": false
+    },
     "com.unity.modules.accessibility@1.0.0": {
       "name": "com.unity.modules.accessibility",
       "displayName": "Accessibility",

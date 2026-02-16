@@ -49,12 +49,13 @@
     <Analyzer Include="/home/alex/Unity/Hub/Editor/6000.0.44f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/Scripts/NodeController.cs" />
     <Compile Include="Assets/Scripts/PlayerCollider.cs" />
     <Compile Include="Assets/Scripts/PlayerInput.cs" />
+    <Compile Include="Assets/Scripts/NodeSpawner.cs" />
+    <Compile Include="Assets/Scripts/EatPellet.cs" />
+    <Compile Include="Assets/Scripts/NodeController.cs" />
     <Compile Include="Assets/Scripts/Movement.cs" />
     <Compile Include="Assets/Scripts/NodeDeleter.cs" />
-    <Compile Include="Assets/Scripts/NodeSpawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1027,6 +1028,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Unity.ScriptableBuildPipeline.Editor.csproj" />
+    <ProjectReference Include="Unity.ScriptableBuildPipeline.csproj" />
     <ProjectReference Include="Unity.VisualStudio.Editor.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />

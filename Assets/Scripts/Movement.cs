@@ -11,7 +11,8 @@ public class Movement : MonoBehaviour
     private GameObject currentNode;
     private GameObject nextNode;
     private Vector3 turnDirection;
-    private int turnTimer = 1;
+    private float turnTimer = 0;
+    private const float TURNTIMERCOUNT = 0.8f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,13 +29,17 @@ public class Movement : MonoBehaviour
 
         //Gets next direction
         if(input.Direction == -direction) direction = input.Direction;
-        else if ((input.Direction.x == 0 && input.Direction.y != 0) || (input.Direction.x != 0 && input.Direction.y == 0))
+        else if(direction != input.Direction)
         {
-            turnDirection = input.Direction;
-            print("dir " + direction);
-            print("turn " + turnDirection);
+            if(turnDirection == input.Direction) turnTimer += Time.deltaTime;
+            else 
+            {
+                turnDirection = input.Direction;
+                turnTimer = 0;
+            }
         }
-  
+
+        //Move to next node.
         transform.position = Vector3.MoveTowards(transform.position, nextNode.transform.position, speed
                 * Time.deltaTime);
 
@@ -42,9 +47,18 @@ public class Movement : MonoBehaviour
         {
             currentNode = nextNode;
 
-            if(currentNode.GetComponent<NodeController>().GetNextNode(turnDirection) != null) 
+            //Resets timer, so player turn to perpendicular node.
+            if(turnTimer >= TURNTIMERCOUNT)
+            {
+                turnTimer = 0;
+                input.ResetDirection(direction);
+                turnDirection = Vector3.zero;
+            }
+        
+            if(currentNode.GetComponent<NodeController>().GetNextNode(turnDirection) != null && turnTimer <= TURNTIMERCOUNT) 
             {
                 direction = turnDirection;
+                turnDirection = Vector3.zero;
             }
         }
 

@@ -40,4 +40,9 @@ public class PlayerInput : MonoBehaviour
             Direction = Vector2.down;
         }
     }
+
+    public void ResetDirection(Vector3 lastDirection)
+    {
+        Direction = lastDirection;
+    }
 }
